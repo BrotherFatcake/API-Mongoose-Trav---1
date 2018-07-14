@@ -168,27 +168,26 @@ router.put('/:id', (req,res) => {
 
         }
     
+    });
         //modelName call findByAndUpdate with args request params id and object with $set/val pair where val is toUpdate
         blogModel.findByIdAndUpdate(req.params.id, {$set: toUpdate})
         
         //then dataName => respond with json message naming request body id has been updated, status 204, and end with no args
         //where data name (ex. student or post or data) is the object being returned
-        .then(data => {
-            res.json({message: `${req.body.id} has been updated`}).status(204).end();
+        .then(data => 
+            res.json({message: `${req.body.id} has been updated`}).status(204).end())
+    
+            //ERROR CATCHER
+            //catch err =>
+            .catch(err => {
+        
+                //log error err to console
+                console.error(err);
+
+                //respond status 500 with json message stating error ocurred
+                res.status(500).json({"error message": 'error occurred while updating'});
         });
         
-    })
-
-    //ERROR CATCHER
-    //catch err =>
-    .catch(err => {
-
-        //log error err to console
-        console.error(err);
-        //respond status 500 with json message stating error ocurred
-        res.status(500).json({"error message": 'error occurred while updating'});
-
-    });
     
 });
     
