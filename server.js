@@ -89,14 +89,6 @@ function startServer(databaseUrl, port=PORT)    {
             
 };
 
-
-
-
-
-
-
-
-
 //Server Stop
 
 //function named stopServer has no args
@@ -114,7 +106,7 @@ function stopServer()   {
             server.close(err => {
                 //if err return reject with err for outstanding promise
                 if(err) {
-                   return reject();
+                   return reject(err);
                 }
 
                 //resolve for outstanding promise
