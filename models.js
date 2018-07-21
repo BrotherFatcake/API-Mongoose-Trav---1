@@ -9,14 +9,14 @@ const mongoose = require('mongoose');
 const blogSchem = mongoose.Schema({
 
     //Within schemaObject specify fieldName: {type: <type>, required: true/false/'do not include'}
-        //Example: fieldName: {type: String, required: true}, fieldName2: {type: String}, include nested fields
+        //Example: fieldName: {type: String, required: true}, fieldName2: {type: String}, fieldName3: {type: Array}, include nested fields
     title: {type: String, require: true},
     content: {type: String, required: true},
     author: {
         firstName: {type: String, required: true},
         lastName: {type: String, required: true}
     }
-
+    
 });
 
 

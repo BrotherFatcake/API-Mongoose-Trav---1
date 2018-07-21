@@ -13,6 +13,7 @@
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "faker": "^4.1.0",
+    "fs": "0.0.1-security",
     "mocha": "^5.2.0"
   },
   "scripts": {

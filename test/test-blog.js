@@ -360,6 +360,11 @@ describe('PUT test', function() {
         .put(`/blogs/${post.id}`)
             //.send with arg of new 2ndConst
         .send(newData)
+          /*
+            .then(function(res) {
+                expect(res).to.have.status(204);
+            })
+            */
         })
         
     
@@ -367,7 +372,7 @@ describe('PUT test', function() {
         .then(function(res) {
             
             //expect arg response to have status 204
-            expect(res).to.have.status(200);
+            expect(res).to.have.status(204);
             
             //return modelName findByID with arg 2ndConst id
             return blogModel.findById(newData.id);
@@ -421,7 +426,7 @@ describe('DELETE test', function()  {
             .then(function(res) {
 
                 //expect arg response to have status 204
-                expect(res).to.have.status(200);                
+                expect(res).to.have.status(204);                
                 //return modelName findById arg 1stVar id
                 return blogModel.findById(delVar.id)
                 //then arg function arg _1stVar

@@ -172,20 +172,22 @@ router.put('/:id', (req,res) => {
         //modelName call findByAndUpdate with args request params id and object with $set/val pair where val is toUpdate
         blogModel.findByIdAndUpdate(req.params.id, {$set: toUpdate})
         
-        //then dataName => respond with json message naming request body id has been updated, status 204, and end with no args
+        //then dataName => respond with status 204, json message naming request body id has been updated, and end with no args
         //where data name (ex. student or post or data) is the object being returned
-        .then(data => 
-            res.json({message: `${req.body.id} has been updated`}).status(204).end())
-    
-            //ERROR CATCHER
-            //catch err =>
-            .catch(err => {
         
-                //log error err to console
-                console.error(err);
+        .then(data => 
+           res.status(204).json({"message": `${req.body.id} has been updated`}).end()
+        )
 
-                //respond status 500 with json message stating error ocurred
-                res.status(500).json({"error message": 'error occurred while updating'});
+        //ERROR CATCHER
+        //catch err =>
+        .catch(err => {
+    
+            //log error err to console
+            console.error(err);
+
+            //respond status 500 with json message stating error ocurred
+            res.status(500).json({"error message": 'error occurred while updating'});
         });
         
     
@@ -199,10 +201,10 @@ router.delete('/:id', (req,res) => {
     //modelName findByIdAndRemove with arg request params id
     blogModel.findByIdAndRemove(req.params.id)
 
-    //then dataName => respond with json message naming request params id has been removed, status 204, and end with no args
+    //then dataName => respond with  status 204, json message naming request params id has been removed, and end with no args
     //where data name (ex. student or post or data) is the object being returned
     .then(data => {
-        res.json({"message": `${req.params.id} has been removed`}).status(204).end();
+        res.status(204).json({message: `${req.params.id} has been removed`}).end();
     })
     
     //ERROR CATCHER
